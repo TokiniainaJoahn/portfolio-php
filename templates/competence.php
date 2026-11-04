@@ -1,4 +1,7 @@
-<%- include ("structure_base/header")%>
+<?php
+$titre = "Compétences";
+require __DIR__ . "/structure_base/header.php";
+?>
 
 <main class="page-competences">
     <section class="competences-intro">
@@ -16,10 +19,10 @@
                     <h3>Systèmes & administration</h3>
                 </div>
                 <div class="card">
-                    <span class="skill-item"><img src="icons8-linux-96.png" alt="Linux"><p>Linux</p></span>
-                    <span class="skill-item"><img src="icons8-git-96.png" alt="Git"><p>Git</p></span>
-                    <span class="skill-item"><img src="github.png" alt="GitHub"><p>GitHub</p></span>
-                    <span class="skill-item"><img src="icons8-docker-96.png" alt="Docker"><p>Docker</p></span>
+                    <span class="skill-item"><img src="/icons8-linux-96.png" alt="Linux"><p>Linux</p></span>
+                    <span class="skill-item"><img src="/icons8-git-96.png" alt="Git"><p>Git</p></span>
+                    <span class="skill-item"><img src="/github.png" alt="GitHub"><p>GitHub</p></span>
+                    <span class="skill-item"><img src="/icons8-docker-96.png" alt="Docker"><p>Docker</p></span>
                 </div>
             </section>
 
@@ -29,9 +32,9 @@
                     <h3>Front-end</h3>
                 </div>
                 <div class="card">
-                    <span class="skill-item"><img src="icons8-html-5-96.png" alt="HTML"><p>HTML</p></span>
-                    <span class="skill-item"><img src="icons8-css3-96.png" alt="CSS"><p>CSS</p></span>
-                    <span class="skill-item"><img src="icons8-javascript-96.png" alt="JavaScript"><p>JavaScript</p></span>
+                    <span class="skill-item"><img src="/icons8-html-5-96.png" alt="HTML"><p>HTML</p></span>
+                    <span class="skill-item"><img src="/icons8-css3-96.png" alt="CSS"><p>CSS</p></span>
+                    <span class="skill-item"><img src="/icons8-javascript-96.png" alt="JavaScript"><p>JavaScript</p></span>
                 </div>
             </section>
 
@@ -41,9 +44,9 @@
                     <h3>Back-end</h3>
                 </div>
                 <div class="card">
-                    <span class="skill-item"><img src="icons8-python-96.png" alt="Python"><p>Python</p></span>
-                    <span class="skill-item"><img src="icons8-php-logo-80.png" alt="PHP"><p>PHP</p></span>
-                    <span class="skill-item"><img src="icons8-nodejs-96.png" alt="Node.js"><p>Node.js</p></span>
+                    <span class="skill-item"><img src="/icons8-python-96.png" alt="Python"><p>Python</p></span>
+                    <span class="skill-item"><img src="/icons8-php-logo-80.png" alt="PHP"><p>PHP</p></span>
+                    <span class="skill-item"><img src="/icons8-nodejs-96.png" alt="Node.js"><p>Node.js</p></span>
                 </div>
             </section>
 
@@ -53,8 +56,8 @@
                     <h3>Bases de données</h3>
                 </div>
                 <div class="card">
-                    <span class="skill-item"><img src="icons8-mysql-logo-96.png" alt="MySQL"><p>MySQL</p></span>
-                    <span class="skill-item"><img src="postgresql.png" alt="PostgreSQL"><p>PostgreSQL <small>(en cours)</small></p></span>
+                    <span class="skill-item"><img src="/icons8-mysql-logo-96.png" alt="MySQL"><p>MySQL</p></span>
+                    <span class="skill-item"><img src="/postgresql.png" alt="PostgreSQL"><p>PostgreSQL <small>(en cours)</small></p></span>
                     <span class="skill-item skill-item--text"><strong>SQLite</strong></span>
                 </div>
             </section>
@@ -85,7 +88,7 @@
         </article>
     </div>
 
-    <%- include ("structure_base/service")%>
+    <?php require __DIR__ . "/structure_base/service.php"; ?>
 </main>
 
-<%- include ("structure_base/footer")%>
+<?php require __DIR__ . "/structure_base/footer.php"; ?>

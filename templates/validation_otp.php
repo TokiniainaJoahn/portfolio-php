@@ -7,16 +7,17 @@
 </head>
 <body>
 
-    <h1>Email de verification OTP envoyé a votre email : <%=email_utilisateur%></h1>
-    <h2>Tapez ici pour validez votre OTP :</h2>
-    
-    <form action="/post/auth/otp/<%=email_utilisateur%>" method="POST">
+    <?php
+    $email_utilisateur = $_GET['email'] ?? '';
+    ?>
+    <h1>Email de vérification envoyé à : <?= htmlspecialchars($email_utilisateur, ENT_QUOTES, 'UTF-8') ?></h1>
+    <h2>Tapez ici pour valider votre OTP :</h2>
 
-        <label for="otp">Entrez l'OTP Valide :</label>
-        <input type="number" name="otp">
-
-        <input type="submit">
-
+    <form action="/Admin/otp/<?= rawurlencode($email_utilisateur) ?>" method="POST">
+        <label for="otp">Entrez l'OTP valide :</label>
+        <input type="number" id="otp" name="otp" required>
+        <input type="submit" value="Valider">
     </form>
+
 </body>
 </html>

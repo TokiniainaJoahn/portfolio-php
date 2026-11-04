@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <%if(titre){%>
-            <%=titre%>
-        <%}else{%>
-            Portfolio RAZANAVAHY Tokiniaina Joah
-        <%}%>
+        <?php $titreAdmin = $titre ?? "Administration"; ?>
+        <?= htmlspecialchars($titreAdmin, ENT_QUOTES, "UTF-8") ?>
     </title>
 </head>
 <body>

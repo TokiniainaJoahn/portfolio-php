@@ -1,12 +1,12 @@
-    <footer>
+<footer>
         <section class="icone_footer">
-            <a href=""><img src="github.png" alt=""></a>
-            <a href=""><img src="linkedin.png" alt=""></a>
-            <a href=""><img src="social.png" alt=""></a>
-            <a href=""><img src="whatsapp.png" alt=""></a>
-            <a href=""><img src="linkedin.png" alt=""></a>
-            <a href=""><img src="linkedin.png" alt=""></a>
-            <a href=""><img src="linkedin.png" alt=""></a>
+            <a href=""><img src="/github.png" alt=""></a>
+            <a href=""><img src="/linkedin.png" alt=""></a>
+            <a href=""><img src="/social.png" alt=""></a>
+            <a href=""><img src="/whatsapp.png" alt=""></a>
+            <a href=""><img src="/linkedin.png" alt=""></a>
+            <a href=""><img src="/linkedin.png" alt=""></a>
+            <a href=""><img src="/linkedin.png" alt=""></a>
         </section>
 
         <section>

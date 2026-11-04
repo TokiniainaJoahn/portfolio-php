@@ -1,5 +1,7 @@
-<%- include ("structure_base/header")%>
-
+<?php
+$titre="Acceuil";
+require "structure_base/header.php";
+?>
     <main class="page-accueil">
         <section class="competences-intro" style="height: 65px; box-sizing: border-box; margin: 0 auto;">
             <p class="competences-intro__label">Bienvenue</p>
@@ -101,8 +103,12 @@
         <section class="services-accueil" aria-labelledby="services-titre">
             <p class="section-label">Services</p>
             <h2 class="services-accueil__titre" id="services-titre">Ce que je <span>propose</span></h2>
-            <%- include ("structure_base/service")%>
+            <<?php
+            require "structure_base/service.php";  
+            ?>
         </section>
     </main>
 
-    <%- include ("structure_base/footer")%>
+<?php
+require "structure_base/footer.php";   
+?>

@@ -15,14 +15,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/style.css">
-    <title>
-        <%if(titre){%>
-            <%=titre%>
-        <%}else{%>
-            Portfolio RAZANAVAHY Tokiniaina Joah
-        <%}%>
-    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <title><?= htmlspecialchars($titre ?? "Portfolio RAZANAVAHY Tokiniaina Joah", ENT_QUOTES, "UTF-8") ?></title>
 </head>
 <body>
 
@@ -32,20 +26,10 @@
         </div>
 
         <nav>
-            
-            <a href="/" <%if(titre == "Acceuil"){%>
-                            class ="mon_place"
-                        <%}%> >Acceuil</a>
-            <a href="/competences"  <%if(titre == "Competence"){%>
-                                        class ="mon_place"
-                                    <%}%> >Competence</a>
-            <a href="/projets"  <%if(titre == "Projets"){%>
-                                    class ="mon_place"
-                                <%}%> >Mes projet</a>
-            <a href="/contact"  <%if(titre == "Me " + "Contacter"){%>
-                                    class ="mon_place"
-                                <%}%> >Me contacter</a>
-
+            <a href="/"<?= ($titre ?? "") === "Accueil" ? ' class="mon_place"' : "" ?>>Accueil</a>
+            <a href="/competences"<?= ($titre ?? "") === "Compétences" ? ' class="mon_place"' : "" ?>>Compétences</a>
+            <a href="/projets"<?= ($titre ?? "") === "Projets" ? ' class="mon_place"' : "" ?>>Projets</a>
+            <a href="/contact"<?= ($titre ?? "") === "Contact" ? ' class="mon_place"' : "" ?>>Me contacter</a>
         </nav>
 
         <div class="logo_btn">
@@ -56,3 +40,6 @@
             <img src="/logo_T.png" alt="Logo Tokiniaina" class="image_logo">
         </div>
     </header>
+
+</body>
+</html>
