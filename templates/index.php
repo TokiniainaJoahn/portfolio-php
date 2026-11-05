@@ -1,6 +1,5 @@
 <?php
 $titre="Acceuil";
-require "structure_base/header.php";
 ?>
     <main class="page-accueil">
         <section class="competences-intro" style="height: 65px; box-sizing: border-box; margin: 0 auto;">
@@ -21,7 +20,7 @@ require "structure_base/header.php";
             </div>
             <div class="hero__visuel" aria-hidden="true">
                 <div class="hero__glow"></div>
-                <img src="logo_T.png" alt="" class="hero__logo">
+                <img src="/images/logo/logo_T.png" alt="" class="hero__logo">
                 <div class="hero__grille"></div>
             </div>
         </section>
@@ -38,27 +37,27 @@ require "structure_base/header.php";
                 </div>
                 <div class="skills-preview" aria-label="Aperçu des compétences">
                     <article class="skill-card">
-                        <img src="/icons8-javascript-96.png" alt="JavaScript" class="skill-card__icone" loading="lazy">
+                        <img src="/images/logo/icons8-javascript-96.png" alt="JavaScript" class="skill-card__icone" loading="lazy">
                         <p class="skill-card__nom">JavaScript</p>
                     </article>
                     <article class="skill-card">
-                        <img src="/icons8-mysql-logo-96.png" alt="MySQL" class="skill-card__icone" loading="lazy">
+                        <img src="/images/logo/icons8-mysql-logo-96.png" alt="MySQL" class="skill-card__icone" loading="lazy">
                         <p class="skill-card__nom">MySQL</p>
                     </article>
                     <article class="skill-card">
-                        <img src="/icons8-python-96.png" alt="Python" class="skill-card__icone" loading="lazy">
+                        <img src="/images/logo/icons8-python-96.png" alt="Python" class="skill-card__icone" loading="lazy">
                         <p class="skill-card__nom">Python</p>
                     </article>
                     <article class="skill-card">
-                        <img src="/github.png" alt="GitHub" class="skill-card__icone" loading="lazy">
+                        <img src="/images/logo/github.png" alt="GitHub" class="skill-card__icone" loading="lazy">
                         <p class="skill-card__nom">GitHub</p>
                     </article>
                     <article class="skill-card">
-                        <img src="/icons8-docker-96.png" alt="Docker" class="skill-card__icone" loading="lazy">
+                        <img src="/images/logo/icons8-docker-96.png" alt="Docker" class="skill-card__icone" loading="lazy">
                         <p class="skill-card__nom">Docker</p>
                     </article>
                     <article class="skill-card">
-                        <img src="/icons8-nodejs-96.png" alt="Node.js" class="skill-card__icone" loading="lazy">
+                        <img src="/images/logo/icons8-nodejs-96.png" alt="Node.js" class="skill-card__icone" loading="lazy">
                         <p class="skill-card__nom">Node.js</p>
                     </article>
                 </div>
@@ -91,11 +90,11 @@ require "structure_base/header.php";
             <div class="appel-contact__actions">
                 <a href="/contact" class="btn btn--or">Me contacter</a>
                 <div class="reseaux" aria-label="Réseaux sociaux">
-                    <a href="#" aria-label="GitHub"><img src="github.png" alt="" loading="lazy"></a>
-                    <a href="#" aria-label="LinkedIn"><img src="linkedin.png" alt="" loading="lazy"></a>
-                    <a href="mailto:tokyainas8@gmail.com" aria-label="Email"><img src="social.png" alt=""
+                    <a href="#" aria-label="GitHub"><img src="/images/logo/github.png" alt="" loading="lazy"></a>
+                    <a href="#" aria-label="LinkedIn"><img src="/images/logo/linkedin.png" alt="" loading="lazy"></a>
+                    <a href="mailto:tokyainas8@gmail.com" aria-label="Email"><img src="/images/logo/social.png" alt=""
                             loading="lazy"></a>
-                    <a href="#" aria-label="WhatsApp"><img src="whatsapp.png" alt="" loading="lazy"></a>
+                    <a href="#" aria-label="WhatsApp"><img src="/images/logo/whatsapp.png" alt="" loading="lazy"></a>
                 </div>
             </div>
         </section>
@@ -108,7 +107,3 @@ require "structure_base/header.php";
             ?>
         </section>
     </main>
-
-<?php
-require "structure_base/footer.php";   
-?>

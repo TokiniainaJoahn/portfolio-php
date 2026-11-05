@@ -1249,6 +1249,17 @@ h2 {
     justify-content: center;
     gap: 15px;
 
+    .projet-vide {
+        width: 100%;
+        margin: 0;
+        padding: 26px;
+        border: 1px solid var(--border-color);
+        border-radius: 18px;
+        background: var(--background-card-competence);
+        color: var(--color-muted);
+        text-align: center;
+    }
+
     .projet-card {
         flex: 0 0 350px;
         width: 350px;

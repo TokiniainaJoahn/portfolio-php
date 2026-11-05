@@ -1,3 +1,10 @@
 {
+    "editor.inlineSuggest.enabled": true,
     "chat.disableAIFeatures": false,
+    "editor.tabCompletion": "on",
+    "chat.editor.workingSet.enabled": true,
+    "chat.tools.edits.autoApprove": false,
+    "editor.copilot.enableAutoCompletions": true,
+    "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+    "chat.checkpoints.enabled": true
 }

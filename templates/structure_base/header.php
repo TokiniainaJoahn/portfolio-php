@@ -34,10 +34,10 @@
 
         <div class="logo_btn">
             <button type="button" class="mode_nuit" aria-label="Activer le mode clair" title="Mode clair">
-                <img src="/icons8-sun-100.png" alt="" class="soleil">
-                <img src="/icons8-do-not-disturb-ios-100.png" alt="" class="lune">
+                <img src="/images/logo/icons8-sun-100.png" alt="" class="soleil">
+                <img src="/images/logo/icons8-do-not-disturb-ios-100.png" alt="" class="lune">
             </button>
-            <img src="/logo_T.png" alt="Logo Tokiniaina" class="image_logo">
+            <img src="/images/logo/logo_T.png" alt="Logo Tokiniaina" class="image_logo">
         </div>
     </header>
 

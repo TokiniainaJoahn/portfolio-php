@@ -1,6 +1,5 @@
 <?php
 $titre = "Contact";
-require __DIR__ . "/structure_base/header.php";
 ?>
 
 <main>
@@ -16,7 +15,7 @@ require __DIR__ . "/structure_base/header.php";
             <p>Envoyez-moi un email et je vous répondrai rapidement.</p>
             <div>
                 <section class="section_a_propos section_a_propos_1">
-                    <a href="mailto:tokyainas8@gmail.com"><img src="/social.png" alt="Email"></a>
+                    <a href="mailto:tokyainas8@gmail.com"><img src="/images/logo/social.png" alt="Email"></a>
                     <div>
                         <h2>Email</h2>
                         <h3>tokyainas8@gmail.com</h3>
@@ -26,8 +25,8 @@ require __DIR__ . "/structure_base/header.php";
             </div>
             <div>
                 <section class="section_a_propos">
-                    <a href="#"><img src="/github.png" alt="GitHub"></a>
-                    <a href="#"><img src="/linkedin.png" alt="LinkedIn" style="margin-left: -10px;"></a>
+                    <a href="#"><img src="/images/logo/github.png" alt="GitHub"></a>
+                    <a href="#"><img src="/images/logo/linkedin.png" alt="LinkedIn" style="margin-left: -10px;"></a>
                     <div>
                         <h2>GitHub / LinkedIn</h2>
                         <p>Consultez mes projets et mon parcours professionnel.</p>
@@ -58,5 +57,3 @@ require __DIR__ . "/structure_base/header.php";
 
     <?php require __DIR__ . "/structure_base/service.php"; ?>
 </main>
-
-<?php require __DIR__ . "/structure_base/footer.php"; ?>
