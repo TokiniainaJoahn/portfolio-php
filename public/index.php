@@ -8,7 +8,7 @@ $server->map("GET" , "/" , function(){
     require "../templates/index.php";
 });
 
-$server->map("GET" , "/competence" , function(){
+$server->map("GET" , "/competences" , function(){
     require "../templates/competence.php";
 });
 
@@ -16,8 +16,8 @@ $server->map("GET" , "/projets" , function(){
     require "../templates/projets.php";
 });
 
-$server->map("GET" , "/conatct" , function(){
-    require "../templates/contact.php";
+$server->map("GET|POST", "/contact", function() {
+    require "../templates/contacter.php";
 });
 
 $match = $server->match();
