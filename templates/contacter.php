@@ -87,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit"])) {
             <section class="divers_contact">
                 <h2><?= htmlspecialchars($resultat["titre"], ENT_QUOTES, "UTF-8") ?></h2>
                 <p><?= htmlspecialchars($resultat["message"], ENT_QUOTES, "UTF-8") ?></p>
-                <a href="/contact" class="btn_submit" style="display:inline-block; text-decoration:none; text-align:center; margin-top:20px;">
+                <a href="/contact" class="btn_submit retour_contact">
                     <?= $resultat["success"] ? "Envoyer un autre message" : "Retour au formulaire" ?>
                 </a>
             </section>
@@ -96,8 +96,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit"])) {
         <article class="contact_article">
             <section class="divers_contact">
                 <h2>Parlons si vous avez des projets ou des conseils à me donner.</h2>
-                <p>Une idée de collaboration ou une opportunité ?</p>
-                <p>Envoyez-moi un email et je vous répondrai rapidement.</p>
+                <p class="petit_intro">Une idée de collaboration ou une opportunité ?</p>
+                <p class="petit_intro">Envoyez-moi un email et je vous répondrai rapidement.</p>
                 <div>
                     <section class="section_a_propos section_a_propos_1">
                         <a href="mailto:tokyainas8@gmail.com"><img src="/images/logo/social.png" alt="Email"></a>
@@ -108,10 +108,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit"])) {
                         </div>
                     </section>
                 </div>
-                <div>
+                <div class="linkedin_github">
                     <section class="section_a_propos">
                         <a href="#"><img src="/images/logo/github.png" alt="GitHub"></a>
-                        <a href="#"><img src="/images/logo/linkedin.png" alt="LinkedIn" style="margin-left: -10px;"></a>
+                        <a href="#"><img src="/images/logo/linkedin.png" alt="LinkedIn" class="icone_reseau_compacte"></a>
                         <div>
                             <h2>GitHub / LinkedIn</h2>
                             <p>Consultez mes projets et mon parcours professionnel.</p>

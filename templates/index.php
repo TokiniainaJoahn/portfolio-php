@@ -102,7 +102,7 @@ $titre="Acceuil";
         <section class="services-accueil" aria-labelledby="services-titre">
             <p class="section-label">Services</p>
             <h2 class="services-accueil__titre" id="services-titre">Ce que je <span>propose</span></h2>
-            <<?php
+            <?php
             require "structure_base/service.php";  
             ?>
         </section>
