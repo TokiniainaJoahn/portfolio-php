@@ -728,10 +728,6 @@ h2 {
 }
 
 @media (max-width: 900px) {
-    .contact_article {
-        grid-template-columns: 1fr;
-        row-gap: 24px;
-    }
     .hero__brand{
         font-size: 35px;
     }
@@ -769,11 +765,6 @@ h2 {
 
     .skills-preview {
         display: none;
-    }
-
-    .contact_article {
-        grid-template-columns: 1fr;
-        row-gap: 24px;
     }
 }
 
@@ -1318,32 +1309,32 @@ footer {
 }
 
 .contact_article {
-    width: 1400px;
-    margin: auto;
-    display: flex;
-    flex-direction: row;
-    column-gap: 70px;
-    row-gap: 28px;
+    width: min(1400px, calc(100% - 32px));
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr);
+    gap: clamp(24px, 4vw, 48px);
 
     > .divers_contact {
-        width: clamp(700px , 750px , 800px);
+        width: 100%;
+        min-width: 0;
         padding: 50px 25px;
         border: 0;
         border-radius: 18px;
         background: var(--hero-fond);
         box-shadow: 0 16px 35px rgba(0, 0, 0, 0.12);
+        box-sizing: border-box;
     }
 
     form {
-        width: 800px;
-        border: 0;
+        width: 100%;
+        min-width: 0;
+        border: 1px solid var(--border-color);
         display: block;
         height: auto;
-        min-width: 0;
         box-sizing: border-box;
-        align-self: center;
+        align-self: start;
         padding: clamp(22px, 4vw, 38px);
-        border: 1px solid var(--border-color);
         border-radius: 18px;
         background: var(--surface);
         box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
@@ -1358,6 +1349,12 @@ footer {
     > .divers_contact:hover {
         transform: translateY(-3px);
         box-shadow: 0 20px 42px rgba(0, 0, 0, 0.16);
+    }
+
+    > .divers_contact:only-child {
+        grid-column: 1 / -1;
+        width: min(760px, 100%);
+        justify-self: center;
     }
 }
 .divers_contact > h2 {
@@ -1408,6 +1405,10 @@ footer {
 .section_a_propos p {
     color: var(--color-muted);
     font-weight: 400;
+}
+
+.section_a_propos h3 {
+   overflow-wrap: anywhere;
 }
 
 .divers_contact .slogan {
@@ -1492,20 +1493,66 @@ footer {
     margin-left: -10px;
 }
 
-@media (max-width: 1500px){
-    .contact_article{
-        width: auto;
-        flex-direction: column;
-        align-items: center;
 
-        .linkedin_github , .petit_intro{
+@media (max-width: 1200px) {
+    .contact_article {
+        width: min(1120px, calc(100% - 32px));
+        gap: 24px;
+
+        > .divers_contact {
+            padding: 25px 24px;
+        }
+
+        form {
+            padding: 32px 24px;
+        }
+    }
+}
+
+@media (max-width: 1100px) {
+    .contact_article {
+
+        > .divers_contact {
+            padding: 10px 24px;
+        }
+    }
+}
+@media (max-width: 1050px) {
+    .contact_article {
+
+        > .divers_contact {
+            padding: 0 24px;
+        }
+    }
+}
+
+@media (max-width: 1000px) {
+    .contact_article {
+        .linkedin_github,
+        .petit_intro {
             display: none;
         }
-        > .divers_contact{
-            padding: 0;
-            box-shadow: none;
-            background: var(--background-color);
+    }
+    .contact_article {
+        width: min(760px, calc(100% - 32px));
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}
+
+@media (max-width: 680px) {
+    .contact_article {
+        width: min(100% - 24px, 760px);
+        gap: 20px;
+
+        > .divers_contact,
+        form {
+            padding: 22px 18px;
         }
+    }
+
+    .section_a_propos {
+        align-items: flex-start;
     }
 }
 
