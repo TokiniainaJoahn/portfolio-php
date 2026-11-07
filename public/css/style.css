@@ -728,6 +728,13 @@ h2 {
 }
 
 @media (max-width: 900px) {
+    .contact_article {
+        grid-template-columns: 1fr;
+        row-gap: 24px;
+    }
+    .hero__brand{
+        font-size: 35px;
+    }
     .hero {
         grid-template-columns: 1fr;
         padding-top: 20px;
@@ -771,6 +778,10 @@ h2 {
 }
 
 @media (max-width: 640px) {
+    .hero__brand{
+        font-size: 25px;
+    }
+
     .hero__actions {
         flex-direction: column;
         align-items: stretch;
@@ -780,7 +791,8 @@ h2 {
         width: 100%;
         margin-right: 15px;        
     }
-    .appel-contact__actions > .btn{
+
+    .appel-contact__actions > .btn {
         width: 30%;
     }
 
@@ -806,6 +818,9 @@ h2 {
 }
 
 @media (max-width: 767px) {
+    .container_competence {
+        width: calc(100% - 24px);
+    }
     header {
         position: sticky;
         top: 0;
@@ -887,7 +902,7 @@ h2 {
             flex-direction: column;
             align-items: stretch;
             gap: 6px;
-            padding: 12px;
+            padding: 12px 14px 12px 0px;
             border: 1px solid var(--border-color);
             border-radius: 0 0 12px 12px;
             background: var(--surface);
@@ -895,7 +910,7 @@ h2 {
 
             a {
                 width: 100%;
-                padding: 12px 14px;
+                padding: 12px 14px 12px 0px;
                 font-size: 16px;
                 text-align: center;
             }
@@ -968,7 +983,7 @@ h2 {
     .competence-card {
         position: relative;
         min-width: 0;
-        height: clamp(150px, 175px, 200px);
+        min-height: 175px;
         overflow: hidden;
         padding: 22px;
         border: 1px solid var(--border-color);
@@ -1100,7 +1115,6 @@ h2 {
 
 .Projet {
     width: min(800px, calc(100% - 32px));
-    min-width: 800px;
     margin: 30px auto;
     display: flex;
     flex-wrap: wrap;
@@ -1211,49 +1225,34 @@ h2 {
             filter: brightness(1.08);
         }
 
-        &.menu-actif .bouton-menu__barres span:nth-child(2) {
-            opacity: 0;
-        }
+    }
+}
 
-        &.menu-actif .bouton-menu__barres span:nth-child(3) {
-            transform: translateY(-7px) rotate(-45deg);
-        }
+@media (max-width: 1200px) {
+    .container_competence {
+        width: calc(100% - 32px);
+    }
 
-        .competence-card__titre {
-            margin-bottom: 16px;
-        }
+    .competence {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
 
-        .card {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-        }
+@media (max-width: 800px) {
 
-        img {
-            width: 46px;
-            height: 46px;
-        }
 
-        .card--text {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .skill-item--text:last-child {
-            grid-column: 1 / -1;
-        }
+    .competence {
+        grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 380px) {
-
-    .appel-contact__actions > .btn{
+    .appel-contact__actions > .btn {
         width: 50%;
     }
-}
 
-@media (max-width: 380px) {
-
-    .competence .card,
-    .competence .card--text {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    .container_competence {
+        width: calc(100% - 20px);
     }
 }
 
@@ -1348,7 +1347,6 @@ footer {
         border-radius: 18px;
         background: var(--surface);
         box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
-        background: var(--surface);
         transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
@@ -1511,14 +1509,12 @@ footer {
     }
 }
 
-@media (max-width: 900px) {
-    .contact_article {
-        grid-template-columns: 1fr;
-        row-gap: 24px;
-    }
-}
-
 @media (max-width: 480px) {
+    .page-competences{
+        .titre_page{
+            display: none;
+        }
+    }
     .contact_article {
         width: min(100% - 24px, 1180px);
         gap: 20px;
@@ -1539,5 +1535,13 @@ footer {
     .contact_article form,
     .contact_article > .divers_contact {
         padding: 18px;
+    }
+}
+
+@media (max-width: 410px) {
+    .page-projets{
+        .titre_page{
+            display: none;
+        }
     }
 }
