@@ -17,6 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
     <title><?= htmlspecialchars($titre ?? "Portfolio RAZANAVAHY Tokiniaina Joah", ENT_QUOTES, "UTF-8") ?></title>
+    <meta name="google-site-verification" content="xd4USxrqjMU05p2M-B4Wke1cqOuRxsVvwCBk02HmpoY" />
 </head>
 <body>
 
