@@ -399,12 +399,21 @@ h2 {
 
 .bandeau-accueil,
 .parcours,
-.appel-contact,
+.appel-contact {
+    position: relative;
+    padding: clamp(28px, 4vh, 40px) clamp(18px, 4vw, 56px);
+    margin: 0 -10px;
+    border-left: 4px solid var(--or);
+}
+
 .services-accueil {
     position: relative;
     padding: clamp(28px, 4vh, 40px) clamp(18px, 4vw, 56px);
     margin: 0 -10px;
     border-left: 4px solid var(--or);
+    background: var(--surface);
+    border-block: 1px solid var(--border-color);
+    margin-bottom: 8px;
 }
 
 .bandeau-accueil {
@@ -587,23 +596,15 @@ h2 {
     }
 }
 
-.services-accueil {
-    background: var(--surface);
-    border-block: 1px solid var(--border-color);
-    margin-bottom: 8px;
-}
-
-.services-accueil .dev_web,
-.services-accueil .dev_app_log {
+.services-accueil .dev_web {
     margin-left: 0;
     margin-right: 0;
-}
-
-.services-accueil .dev_web {
     margin-top: 12px;
 }
 
 .services-accueil .dev_app_log {
+    margin-left: 0;
+    margin-right: 0;
     margin-bottom: 0;
 }
 
@@ -1055,7 +1056,8 @@ footer {
 
     .footer_copy {
         color: var(--color-font);
-        margin-bottom: 10px;
+        margin-top: 20px;
+        margin-bottom: 5px;
     }
 
     .icone_footer {
@@ -1072,6 +1074,17 @@ footer {
             width: 50px;
             height: 50px;
         }
+    }
+    .btn_telechargement_cv{
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        font-size: 15px;
+        font-family: var(--font-corps);
+        padding: 10px 15px;
+        border-radius: 5px;
+        background-color: var(--or);
+
     }
 }
 
@@ -1177,14 +1190,18 @@ footer {
 
 .section_a_propos h2,
 .section_a_propos h3,
-.section_a_propos h4,
-.section_a_propos p {
+.section_a_propos h4 {
     margin: 2px 0;
 }
 
-.section_a_propos h3,
-.section_a_propos h4,
 .section_a_propos p {
+    margin: 2px 0;
+    color: var(--color-muted);
+    font-weight: 400;
+}
+
+.section_a_propos h3,
+.section_a_propos h4 {
     color: var(--color-muted);
     font-weight: 400;
 }
@@ -1220,7 +1237,19 @@ footer {
     display: none;
 }
 
-.input_style,
+.input_style {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+    border: 1px solid var(--input-bordure);
+    border-radius: 8px;
+    background: var(--background-color);
+    color: var(--color-font);
+    font: inherit;
+    height: 44px;
+    padding: 0 12px;
+}
+
 .input_message {
     width: 100%;
     box-sizing: border-box;
@@ -1230,15 +1259,8 @@ footer {
     background: var(--background-color);
     color: var(--color-font);
     font: inherit;
-}
-
-.input_style {
-    height: 44px;
-    padding: 0 12px;
-}
-
-.input_message {
     min-height: 120px;
+    max-height: 140px;
     padding: 12px;
     resize: vertical;
 }

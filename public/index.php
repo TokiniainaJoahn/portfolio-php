@@ -15,6 +15,9 @@ $server->map("GET" , "/competences" , function(){
 $server->map("GET" , "/projets" , function(){
     require "../templates/projets.php";
 });
+$server->map("GET" , "/download" , function(){
+    require "../templates/download.php";
+});
 
 $server->map("GET|POST", "/contact", function() {
     require "../templates/contacter.php";

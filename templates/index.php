@@ -90,11 +90,11 @@ $titre="Acceuil";
             <div class="appel-contact__actions">
                 <a href="/contact" class="btn btn--or">Me contacter</a>
                 <div class="reseaux" aria-label="Réseaux sociaux">
-                    <a href="#" aria-label="GitHub"><img src="/images/logo/github.png" alt="" loading="lazy"></a>
-                    <a href="#" aria-label="LinkedIn"><img src="/images/logo/linkedin.png" alt="" loading="lazy"></a>
+                    <a href="https://github.com/TokiniainaJoahn" aria-label="GitHub"><img src="/images/logo/github.png" alt="" loading="lazy"></a>
+                    <a href="https://mg.linkedin.com/in/tokiniaina-joahn-razanavahy-652988432" aria-label="LinkedIn"><img src="/images/logo/linkedin.png" alt="" loading="lazy"></a>
                     <a href="mailto:tokyainas8@gmail.com" aria-label="Email"><img src="/images/logo/social.png" alt=""
                             loading="lazy"></a>
-                    <a href="#" aria-label="WhatsApp"><img src="/images/logo/whatsapp.png" alt="" loading="lazy"></a>
+                    <a href="https://wa.me/261380794479?s=t" aria-label="WhatsApp"><img src="/images/logo/whatsapp.png" alt="" loading="lazy"></a>
                 </div>
             </div>
         </section>
