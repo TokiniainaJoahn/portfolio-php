@@ -1,6 +1,9 @@
 <?php
 
 require '../vendor/autoload.php';
+require "../templates/fonction.php";
+require "../templates/admin/auth.php";
+
 
 $server = new AltoRouter();
 
@@ -21,6 +24,55 @@ $server->map("GET" , "/download" , function(){
 
 $server->map("GET|POST", "/contact", function() {
     require "../templates/contacter.php";
+});
+
+$server->map("GET" , "/login" , function(){
+    require '../templates/admin/login.php';
+});
+
+$server->map("GET" , "/projet_admin" , function(){
+    session_start();
+    if (!est_connecte()){
+        header('Location: /');
+        exit();
+    }
+    require '../templates/admin/projet_admin.php';
+});
+
+$server->map("GET" , "/ajouter_projet" , function(){
+    session_start();
+    if (!est_connecte()){
+        header('Location: /');
+        exit();
+    }
+    require '../templates/admin/ajouter_projet.php';
+});
+
+$server->map("POST" , "/auth" , function(){
+    try{
+        $mysql = connect_bd("mysql:host=localhost;dbname=portfolio;charset=utf8", "root", "Tokiniaina");
+    
+        $query = $mysql->prepare("SELECT * FROM utilisateur WHERE email= :email");
+        $query->execute(["email" => $_POST["email"]]);
+        $donnes = $query->fetch();
+        
+
+    }catch (PDOException $e){
+        $error = "Vous n'avez pas pu s'authentifier";
+        header('Location: /login');
+    }
+    if($_POST["email"] == $donnes["email"] && password_verify($_POST["mdp"] , $donnes["mdp"])){
+        session_start();
+        $_SESSION["role"] = "Administrateur";
+        $_SESSION["email"] = $_POST["mdp"];
+        header('Location: /');
+        exit();
+    }else{
+        header('Location: /login');
+        $error = "Email ou identifiant incorrect";
+        exit();
+    }
+
 });
 
 $match = $server->match();

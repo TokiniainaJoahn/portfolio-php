@@ -2,6 +2,7 @@
     --background-color: #0c0e12;
     --background-color-soleil: aliceblue;
     --color-font: #f2f2f0;
+    --background-error : rgb(230, 103, 115);
     --color-muted: rgba(242, 242, 240, 0.72);
     --color-muted-fort: rgba(242, 242, 240, 0.68);
     --background-card: #1a2233;
@@ -43,6 +44,7 @@ html.theme-clair {
     --background-card: #e4e9ef;
     --background-card-competence: #dde5ee;
     --surface: #ffffff;
+    --background-error : rgb(255, 161, 171) ;
     --border-color: #c5ced9;
     --nav-link: #12151a;
     --nav-hover-border: rgba(18, 21, 26, 0.35);
@@ -375,6 +377,17 @@ h2 {
     background: radial-gradient(circle, rgba(248, 196, 26, 0.22) 0%, transparent 68%);
     filter: blur(8px);
     animation: pulse-or 4.5s ease-in-out infinite;
+}
+
+.error{
+    background-color: var(--background-error);
+    color: var(--font-corps);
+    border-radius: 5px;
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+    padding: 10px 15px;
+    min-height: 25px;
 }
 
 .hero__grille {
@@ -1084,7 +1097,9 @@ footer {
         padding: 10px 15px;
         border-radius: 5px;
         background-color: var(--or);
-
+            &:hover{
+                background-color: var(--surface);
+            }
     }
 }
 
@@ -1232,9 +1247,61 @@ footer {
     margin-bottom: 4px;
     font-weight: 600;
 }
+.main_login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 80px - 195px);
+    .form_login{
+        width: clamp(50% , 900px ,1000px);
+        padding: 25px 25px 35px 25px;
+        border: 2px solid var(--border-color);
+        background-color: var(--surface);
+        border-radius: 8px;
+        label{
+            display: inline-block;
+            font-size: 20px;
+            font-weight: bold;
+            font-family: serif;
+            height: 35px;
+        }
+        button{
+            margin-top: 15px;
+            transition-duration: 0.2s;
+            &:hover{
+                border-color: var(--border-color);
+                transform: translateY(-3px);
+                background-color: var(--surface);
+                color: white;
+            }
+        }
+    }
+}
 
 .contact_article form br {
     display: none;
+}
+.ajouter_projet{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 55px;
+    width: 58px;
+    text-decoration: none;
+    border-radius: 8px;
+    border: 3px solid var(--border-color);
+    background-color: var(--surface);
+    font-size : 45px ;
+    color: white;
+    position: absolute;
+    animation-duration: 0.2s;
+    right: 50px;
+    bottom: 20px;
+
+    &:hover{
+        border-color: var(--font-corps);
+        transform: translateY(-3px);
+    }
 }
 
 .input_style {
@@ -1250,6 +1317,7 @@ footer {
     padding: 0 12px;
 }
 
+
 .input_message {
     width: 100%;
     box-sizing: border-box;
@@ -1261,8 +1329,13 @@ footer {
     font: inherit;
     min-height: 120px;
     max-height: 140px;
-    padding: 12px;
+    padding: 10px 12px;
     resize: vertical;
+}
+
+.input_file{
+    margin-left: 15px;
+    font-size: 17px;
 }
 
 .input_style:focus,
