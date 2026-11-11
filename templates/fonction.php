@@ -15,3 +15,9 @@ function envoi_requette(string $query ,objet $bd){
         throw new PDOException("Erreur de requette");
     };
 };
+
+function send_file(string $file_name , string $path_absolute){
+    header('content-disposition: attachement ; filename="$file_name"');
+    readfile($path_absolute);
+    exit();
+}

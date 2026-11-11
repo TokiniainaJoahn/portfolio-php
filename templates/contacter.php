@@ -1,4 +1,7 @@
 <?php
+global $titre , $description ;
+$titre="Contact";
+$description="Ceci est la page pour contacter RAZANAVAHY Tokinaiina Joahn";
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);

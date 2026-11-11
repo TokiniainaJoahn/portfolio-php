@@ -1,5 +1,7 @@
 <?php
-$titre="Acceuil";
+global $titre , $description ;
+$titre = "Acceuil";
+$description = "Ceci est ma page d'acceuil du portfolio de RAZANAVAHY Tokinaiina Joahn";
 ?>
     <main class="page-accueil">
         <?php if($_SESSION["message"]) : ?>

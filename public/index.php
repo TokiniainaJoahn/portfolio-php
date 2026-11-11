@@ -26,6 +26,7 @@ $server->map("GET" , "/projets" , function(){
 
 $server->map("GET" , "/download" , function(){
     require "../templates/download.php";
+    send_file("mon_cv.pdf" , "mon_cv/mon_cv.pdf");
 });
 
 $server->map("GET" , "/Deconnection" , function(){
@@ -107,6 +108,18 @@ $server->map("POST" , "/auth" , function(){
 
 });
 
+$server->map("POST" , "/ajouter_projet" , function(){
+    try{
+        $mysql = connect_bd("mysql:host=localhost;dbname=portfolio;charset=utf8", "root", "Tokiniaina");
+    
+        $query = $mysql->prepare("INSERT INTO Projet (Description , Github , Image , nom) VALUES (? , ? , ? , ?)");
+        $query->execute($_POST["Description"] , $_POST["Github"] , $_POST["image"] , $_POST["nom"]);        
+
+    }catch (PDOException $e){
+        $error = "On n'as pas pu executer la requette" ;
+    }
+});
+
 $match = $server->match();
 
 if($match){
@@ -114,8 +127,10 @@ if($match){
     ob_start();
     $match["target"]();
     $contenent = ob_get_clean();
+    require "../templates/structure_base/layouts.php";
+    exit();
     if (!est_connecte()){
-        require "../templates/structure_base/layouts.php";
+        
     }else{
         require "../templates/structure_base/layouts_admin.php";
     }

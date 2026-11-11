@@ -1,5 +1,7 @@
 <?php
-$titre = "Projets";
+global $titre , $description ;
+$titre="Projets";
+$description="Ceci est ma page pour voir mes projets  pour le portfolio de RAZANAVAHY Tokinaiina Joahn";
 $error = null;
 try{
     $mysql = connect_bd("mysql:host=localhost;dbname=portfolio;charset=utf8", "root", "Tokiniaina");
@@ -31,9 +33,10 @@ try{
                 <?php foreach ($projets as $projet): ?>
                     <article class="projet-card">
                         <section class="projet-card__image">
-                            <img src="" alt="Aperçu du projet">
+                            <img src="images/image_projets/<?= $projet['Image'] ?>" alt="Aperçu du projet">
                         </section>
                         <div class="projet-card__contenu">
+                            <h4><?=$projet['nom']; ?></h4>
                             <p class="projet-card__description">
                                 <?=$projet['Description']; ?>
                             </p>

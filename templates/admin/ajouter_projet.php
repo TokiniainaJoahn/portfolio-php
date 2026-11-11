@@ -1,5 +1,5 @@
 <main class="main_login">  
-    <form action="" method="POST" class="form_login">
+    <form action="/ajouter_projet" method="POST" class="form_login">
         <label for="nom_projet">Nom du projet :</label>
         <input type="text" name="nom_projet" class="input_style" placeholder="Entrez le nom du projet">
 

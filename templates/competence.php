@@ -1,5 +1,7 @@
 <?php
-$titre = "Compétences";
+global $titre , $description ;
+$titre="Compétences";
+$description="Ceci est la page pour voir les compétences de RAZANAVAHY Tokinaiina Joahn";
 ?>
 
 <main class="page-competences">
