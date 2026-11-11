@@ -4,7 +4,7 @@ $titre = "Acceuil";
 $description = "Ceci est ma page d'acceuil du portfolio de RAZANAVAHY Tokinaiina Joahn";
 ?>
     <main class="page-accueil">
-        <?php if($_SESSION["message"]) : ?>
+        <?php if(isset($_SESSION["message"])) : ?>
             <section class="parents_centrage" style="margin-bottom: 15px;">
                 <div class="error" style="background-color: green ; border-color : green;"><?= $_SESSION["message"] ?></div>
             </section>
