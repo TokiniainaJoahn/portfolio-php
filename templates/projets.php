@@ -4,7 +4,7 @@ $error = null;
 try{
     $mysql = connect_bd("mysql:host=localhost;dbname=portfolio;charset=utf8", "root", "Tokiniaina");
 
-    $projets = $mysql->query("SELECTsdfsdf * FROM Projet")->fetchAll();
+    $projets = $mysql->query("SELECT * FROM Projet")->fetchAll();
 }catch (PDOException $e){
     $error = "Erreur de connection à la base de donnés, veillez essayer plus tard ou veillez me contacter aussi pour le problème";
 }

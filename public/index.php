@@ -16,17 +16,46 @@ $server->map("GET" , "/competences" , function(){
 });
 
 $server->map("GET" , "/projets" , function(){
+    session_start();
+    if (est_connecte()){
+        header('Location: /');
+        exit();
+    }
     require "../templates/projets.php";
 });
+
 $server->map("GET" , "/download" , function(){
     require "../templates/download.php";
 });
 
+$server->map("GET" , "/Deconnection" , function(){
+    session_start();
+    if(est_connecte()){
+        unset($_SESSION["role"]);
+        unset($_SESSION["email"]);
+        session_destroy();
+        header("Location: /");
+        exit();
+    }
+    header("Location: /");
+    exit();
+});
+
 $server->map("GET|POST", "/contact", function() {
+    session_start();
+    if (est_connecte()){
+        header('Location: /');
+        exit();
+    }
     require "../templates/contacter.php";
 });
 
 $server->map("GET" , "/login" , function(){
+    session_start();
+    if (est_connecte()){
+        header('Location: /');
+        exit();
+    }
     require '../templates/admin/login.php';
 });
 
@@ -82,7 +111,12 @@ $match = $server->match();
 
 if($match){
     session_start();
-    require "../templates/structure_base/header.php";
+    ob_start();
     $match["target"]();
-    require "../templates/structure_base/footer.php";
+    $contenent = ob_get_clean();
+    if (!est_connecte()){
+        require "../templates/structure_base/layouts.php";
+    }else{
+        require "../templates/structure_base/layouts_admin.php";
+    }
 };
