@@ -33,7 +33,8 @@ $server->map("GET" , "/login" , function(){
 $server->map("GET" , "/projet_admin" , function(){
     session_start();
     if (!est_connecte()){
-        header('Location: /');
+        $_SESSION["message"] = "Vous devez vous connecter en tant qu'administrateur";
+        header('Location: /login');
         exit();
     }
     require '../templates/admin/projet_admin.php';
@@ -42,7 +43,8 @@ $server->map("GET" , "/projet_admin" , function(){
 $server->map("GET" , "/ajouter_projet" , function(){
     session_start();
     if (!est_connecte()){
-        header('Location: /');
+        $_SESSION["message"] = "Vous devez vous connecter en tant qu'administrateur";
+        header('Location: /login');
         exit();
     }
     require '../templates/admin/ajouter_projet.php';
@@ -65,11 +67,12 @@ $server->map("POST" , "/auth" , function(){
         session_start();
         $_SESSION["role"] = "Administrateur";
         $_SESSION["email"] = $_POST["mdp"];
+        $_SESSION["message"] = "Bienvenue sur la page d'acceuil vous êtes connectés en mode Administrateur et vous avec les droits d'Administrateur";
         header('Location: /');
         exit();
     }else{
+        $_SESSION["message"] = "Email ou mots de passe incorrect veillez reyessayer";
         header('Location: /login');
-        $error = "Email ou identifiant incorrect";
         exit();
     }
 
@@ -78,6 +81,7 @@ $server->map("POST" , "/auth" , function(){
 $match = $server->match();
 
 if($match){
+    session_start();
     require "../templates/structure_base/header.php";
     $match["target"]();
     require "../templates/structure_base/footer.php";

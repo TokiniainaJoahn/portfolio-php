@@ -2,6 +2,12 @@
 $titre="Acceuil";
 ?>
     <main class="page-accueil">
+        <?php if($_SESSION["message"]) : ?>
+            <section class="parents_centrage" style="margin-bottom: 15px;">
+                <div class="error" style="background-color: green ; border-color : green;"><?= $_SESSION["message"] ?></div>
+            </section>
+            <?php unset($_SESSION["message"]) ;?>
+        <?php endif ?>
         <section class="competences-intro" style="height: 65px; box-sizing: border-box; margin: 0 auto;">
             <p class="competences-intro__label">Bienvenue</p>
             <h2 class="titre_page" style="margin: 5px 0;">ACCEUIL</h2>
