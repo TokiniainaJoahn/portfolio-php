@@ -32,9 +32,10 @@ try{
                     <?php foreach ($projets as $projet): ?>
                         <article class="projet-card">
                             <section class="projet-card__image">
-                                <img src="" alt="Aperçu du projet">
+                                <img src="images/images_projets/<?= $projet['Image']; ?>" alt="Aperçu du projet">
                             </section>
                             <div class="projet-card__contenu">
+                                <h4><?=$projet['nom']; ?></h4>
                                 <p class="projet-card__description">
                                     <?=$projet['Description']; ?>
                                 </p>
