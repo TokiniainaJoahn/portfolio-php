@@ -1,3 +1,7 @@
+<?php
+$router = \class\Router::getInstance();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -29,10 +33,10 @@
         </div>
 
         <nav id="navigation-principale" aria-label="Navigation principale">
-            <a href="/"<?= ($titre ?? "") == "Acceuil" ? ' class="mon_place"' : "" ?>>Accueil</a>
-            <a href="/competences"<?= ($titre ?? "") == "Compétences" ? ' class="mon_place"' : "" ?>>Compétences</a>
-            <a href="/projets"<?= ($titre ?? "") == "Projets" ? ' class="mon_place"' : "" ?>>Projets</a>
-            <a href="/contact"<?= ($titre ?? "") == "Contact" ? ' class="mon_place"' : "" ?>>Me contacter</a>
+            <a href="<?= $router->generate("Acceuil"); ?>"<?= ($titre ?? "") == "Acceuil" ? ' class="mon_place"' : "" ?>>Accueil</a>
+            <a href="<?= $router->generate("Competence"); ?>"<?= ($titre ?? "") == "Compétences" ? ' class="mon_place"' : "" ?>>Compétences</a>
+            <a href="<?= $router->generate("projet"); ?>"<?= ($titre ?? "") == "Projets" ? ' class="mon_place"' : "" ?>>Projets</a>
+            <a href="<?= $router->generate("contact"); ?>"<?= ($titre ?? "") == "Contact" ? ' class="mon_place"' : "" ?>>Me contacter</a>
         </nav>
 
         <div class="logo_btn">

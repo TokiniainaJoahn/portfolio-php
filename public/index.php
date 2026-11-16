@@ -4,153 +4,135 @@ require '../vendor/autoload.php';
 require "../templates/fonction.php";
 require "../templates/admin/auth.php";
 
+require "../classes/auth.php";
+require "../classes/router.php";
+require "../classes/base_donnes/bdd.php";
+require "../classes/file_management.php";
 
-$server = new AltoRouter();
+$router = \class\Router::getInstance();
 
-$server->map("GET" , "/" , function(){
-    require "../templates/index.php";
-});
+$bd = \class\db\Base_donnes::getInstance();
 
-$server->map("GET" , "/competences" , function(){
-    require "../templates/competence.php";
-});
+$router->get("/" , "index" , "Acceuil");
+$router->get("/competences" , "competence" , "Competence");
+$router->get("/projet" , function() use ($bd){
+            if (\class\Authentification::est_autorise()){
+                header('Location: /');
+                exit();
+            }
+            return "../templates/projets.php";
+        } , "projet");
 
-$server->map("GET" , "/projets" , function(){
-    session_start();
-    if (est_connecte()){
+$router->get("/contact", function(){
+            if (\class\Authentification::est_autorise()){
+                header('Location: /');
+                exit();
+            }
+            return "../templates/contacter.php";
+        } , "contact");
+$router->get("/download" , function(){
+            \class\download::send_file_download("mon_cv/mon_cv.pdf" , "CV_RAZANAVAHY_Tokiniaina_Joahn.pdf");
+        } , "download");
+
+$router->get("/login" , function(){
+    if (\class\Authentification::est_autorise()){
         header('Location: /');
         exit();
     }
-    require "../templates/projets.php";
+    return '../templates/admin/login.php';
 });
 
-$server->map("GET" , "/download" , function(){
-    send_file("Cv_Tokiniaina_Joahn.pdf" , "mon_cv/mon_cv.pdf");
-});
+$router->get("/Deconnection" , function(){
+            if(\class\Authentification::est_autorise()){
+                unset($_SESSION["role"]);
+                unset($_SESSION["email"]);
+                session_destroy();
+                header("Location: /");
+                exit();
+            }
+            header("Location: /");
+            exit();
+        });
 
-$server->map("GET" , "/Deconnection" , function(){
-    session_start();
-    if(est_connecte()){
-        unset($_SESSION["role"]);
-        unset($_SESSION["email"]);
-        session_destroy();
-        header("Location: /");
-        exit();
-    }
-    header("Location: /");
-    exit();
-});
+$router->get("/projet_admin" , function(){
+            if ( !(\class\Authentification::est_autorise()) ){
+                header('Location: /login');
+                exit();
+            }
+            return '../templates/admin/projet_admin.php';
+        });
 
-$server->map("GET|POST", "/contact", function() {
-    session_start();
-    if (est_connecte()){
-        header('Location: /');
-        exit();
-    }
-    require "../templates/contacter.php";
-});
+$router->get("/ajouter_projet" , function(){
+            if ( !(\class\Authentification::est_autorise()) ){
+                header('Location: /login');
+                exit();
+            }
+            return '../templates/admin/ajouter_projet.php';
+        });
 
-$server->map("GET" , "/login" , function(){
-    session_start();
-    if (est_connecte()){
-        header('Location: /');
-        exit();
-    }
-    require '../templates/admin/login.php';
-});
-
-$server->map("GET" , "/projet_admin" , function(){
-    session_start();
-    if (!est_connecte()){
-        $_SESSION["message"] = "Vous devez vous connecter en tant qu'administrateur";
-        header('Location: /login');
-        exit();
-    }
-    require '../templates/admin/projet_admin.php';
-});
-
-$server->map("GET" , "/ajouter_projet" , function(){
-    session_start();
-    if (!est_connecte()){
-        $_SESSION["message"] = "Vous devez vous connecter en tant qu'administrateur";
-        header('Location: /login');
-        exit();
-    }
-    require '../templates/admin/ajouter_projet.php';
-});
-
-$server->map("POST" , "/ajoute_projet" , function(){
+$router->post("/ajoute_projet" , function(){
     $file = $_FILES["image"];
-    $valid_extensions = ["png" , "jpg"];
-    if($file["error"] != 0 ){
-        $_SESSION["message"] = "Erreur lors de la soumission du fichier " . $file["error"];
-        header("Location: /ajouter_projet");
-        exit();
-    }
-    $fileExtension = pathinfo($file["name"] , PATHINFO_EXTENSION);
-    if(!in_array(strtolower($fileExtension) , $valid_extensions , true)){
-        $_SESSION["message"] = "Fichier non accepté, les fichier accepté sont: " . $valid_extensions;
-        header("Location: /ajouter_projet");
-        exit();
-    }
-    $nom_aleatoire = date("YmdHis") . bin2hex(random_bytes(8));
-    $file["name"] = $nom_aleatoire . "." . $fileExtension ;
-    try{
-        $mysql = connect_bd("mysql:host=localhost;dbname=portfolio;charset=utf8", "root", "Tokiniaina");
+
+    $file_uploader = new upload();
+
+    $file_uploader->renrename_file();
     
-        $query = $mysql->prepare("INSERT INTO Projet (Description , Github , Image , nom) VALUES (? , ? , ? , ?)");
-        $query->execute([$_POST["Description"] , $_POST["Github"] , $file["name"] , $_POST["nom_projet"]]);        
+    try{
+        $mysql = new \class\db\Base_donnes("portfolio");
+
+        $query = "INSERT INTO Projet (Description , Github , Image , nom) VALUES (? , ? , ? , ?)" ;
+    
+        $parametres_query = [
+            $_POST["Description"] , 
+            $_POST["Github"] , 
+            $file["name"] , 
+            $_POST["nom_projet"]
+        ];
+        $query = $mysql->prepare_execute($query , $parametres_query);   
 
     }catch (PDOException $e){
         $_SESSION["message"] = "Veillez reyessayer plus tard on n'as pas pu enregistrer le projet";
         header("Location: /ajouter_projet");
         exit();
     }
-    move_uploaded_file(
-        $file["tmp_name"] , "images/images_projets/" . $file["name"]
-    );
+
+    $file_uploader->upload();
+
     header("Location: /ajouter_projet");
+    
     exit();
 });
 
-$server->map("POST" , "/auth" , function(){
+$router->post("/auth" , function(){
     try{
-        $mysql = connect_bd("mysql:host=localhost;dbname=portfolio;charset=utf8", "root", "Tokiniaina");
+        $mysql = new \class\db\Base_donnes("portfolio");
+
+        $query = "SELECT * FROM utilisateur WHERE email= :email" ;
+        $parametres_query = [
+            "email" => $_POST["email"]
+        ];
     
-        $query = $mysql->prepare("SELECT * FROM utilisateur WHERE email= :email");
-        $query->execute(["email" => $_POST["email"]]);
-        $donnes = $query->fetch();
-        
+        $donnes_bdd = $mysql->prepare_execute($query , $parametres_query);
 
     }catch (PDOException $e){
         $error = "Vous n'avez pas pu s'authentifier";
         header('Location: /login');
     }
-    if($_POST["email"] == $donnes["email"] && password_verify($_POST["mdp"] , $donnes["mdp"])){
-        session_start();
-        $_SESSION["role"] = "Administrateur";
-        $_SESSION["email"] = $_POST["mdp"];
-        $_SESSION["message"] = "Bienvenue sur la page d'acceuil vous êtes connectés en mode Administrateur et vous avec les droits d'Administrateur";
+
+    $donnes_utilisateur = [
+        "email" => $_POST["email"],
+        "mdp" => $_POST["mdp"]
+    ];
+
+    $authorized = \class\Authentification::connection($donnes_utilisateur , $donnes_bdd);
+
+    if($authorized){
         header('Location: /');
         exit();
-    }else{
-        $_SESSION["message"] = "Email ou mots de passe incorrect veillez reyessayer";
-        header('Location: /login');
-        exit();
     }
+    header('Location: /login');
+    exit();
 
 });
 
-$match = $server->match();
-
-if($match){
-    session_start();
-    ob_start();
-    $match["target"]();
-    $contenent = ob_get_clean();
-    if (!est_connecte()){
-        require "../templates/structure_base/layouts.php";
-    }else{
-        require "../templates/structure_base/layouts_admin.php";
-    }
-};
+$router->run();

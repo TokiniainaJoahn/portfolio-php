@@ -3,10 +3,12 @@ global $titre , $description ;
 $titre="Projets";
 $description="Ceci est ma page pour voir mes projets  pour le portfolio de RAZANAVAHY Tokinaiina Joahn";
 $error = null;
-try{
-    $mysql = connect_bd("mysql:host=localhost;dbname=portfolio;charset=utf8", "root", "Tokiniaina");
+$bd = \class\db\Base_donnes::getInstance();
 
-    $projets = $mysql->query("SELECT * FROM Projet")->fetchAll();
+try{
+    $query = "SELECT * FROM Projet";
+
+    $projets = $bd->querry($query);
 }catch (PDOException $e){
     $error = "Erreur de connection à la base de donnés, veillez essayer plus tard ou veillez me contacter aussi pour le problème";
 }
